@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productapi
+  
+  labels:
+    app: product
+    type: productapi
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      type: productapi
+  template:
+    metadata:
+      name: productapi-pod
+      labels:
+        app: product
+        type: productapi
+    spec:
+         containers:
+         - name: product
+           image: hajrasn/demo123

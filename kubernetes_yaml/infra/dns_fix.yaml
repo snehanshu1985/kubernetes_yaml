@@ -1,0 +1,198 @@
+piVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-09-26T23:58:59Z"
+  generateName: webapp-6b89d5cb4-
+  labels:
+    name: webapp
+    pod-template-hash: 6b89d5cb4
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:name: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"0784ed72-3026-4b63-a13f-a912d5a8065e"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:containers:
+          k:{"name":"simple-webapp-mysql"}:
+            .: {}
+            f:env:
+              .: {}
+              k:{"name":"DB_Host"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"DB_Password"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+              k:{"name":"DB_User"}:
+                .: {}
+                f:name: {}
+                f:value: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:ports:
+              .: {}
+              k:{"containerPort":8080,"protocol":"TCP"}:
+                .: {}
+                f:containerPort: {}
+                f:protocol: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-09-26T23:58:59Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.244.1.8"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-09-26T23:59:07Z"
+  name: webapp-6b89d5cb4-kfxsn
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: webapp-6b89d5cb4
+    uid: 0784ed72-3026-4b63-a13f-a912d5a8065e
+  resourceVersion: "9512"
+  selfLink: /api/v1/namespaces/default/pods/webapp-6b89d5cb4-kfxsn
+  uid: 178ee26b-9d95-43a7-b9cf-a40a9cd8566c
+spec:
+  containers:
+  - env:
+    - name: DB_Host
+      value: mysql.payroll
+    - name: DB_User
+      value: root
+    - name: DB_Password
+      value: paswrd
+    image: mmumshad/simple-webapp-mysql
+    imagePullPolicy: Always
+    name: simple-webapp-mysql
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-6fqpg
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: node01
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-6fqpg
+    secret:
+      defaultMode: 420
+      secretName: default-token-6fqpg
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-26T23:58:59Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-26T23:59:07Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-26T23:59:07Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-26T23:58:59Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://047290e566fbea71182485447c564c7af18729a8c5bddee5ac40a4b408906f8d
+    image: mmumshad/simple-webapp-mysql:latest
+    imageID: docker-pullable://mmumshad/simple-webapp-mysql@sha256:d4d0c03fcb76cee6ae2511fa7f3f6b7090f0c5e0cb3f276687f9ddf2c689cc09
+    lastState: {}
+    name: simple-webapp-mysql
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-09-26T23:59:06Z"
+  hostIP: 172.17.0.17
+  phase: Running
+  podIP: 10.244.1.8
+  podIPs:
+  - ip: 10.244.1.8
+  qosClass: BestEffort
+  startTime: "2020-09-26T23:58:59Z"

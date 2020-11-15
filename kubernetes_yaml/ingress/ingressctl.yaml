@@ -1,0 +1,59 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  creationTimestamp: "2020-09-28T15:36:41Z"
+  generation: 1
+  managedFields:
+  - apiVersion: extensions/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:nginx.ingress.kubernetes.io/rewrite-target: {}
+          f:nginx.ingress.kubernetes.io/ssl-redirect: {}
+      f:spec:
+        f:rules: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-09-28T15:36:41Z"
+  - apiVersion: extensions/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: nginx-ingress-controller
+    operation: Update
+    time: "2020-09-28T15:38:19Z"
+  name: ingress-wear-watch
+  namespace: app-space
+  resourceVersion: "1094"
+  selfLink: /apis/extensions/v1beta1/namespaces/app-space/ingresses/ingress-wear-watch
+  uid: 49d51688-7b81-417e-8962-44b3016dbb1a
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: wear-service
+          servicePort: 8080
+        path: /wear
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: video-service
+          servicePort: 8080
+        path: /stream
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: food-service
+          servicePort: 8080
+        path: /eat
+        pathType: ImplementationSpecifics
+status:
+  loadBalancer:
+    ingress:
+    - {}

@@ -1,0 +1,188 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-09-04T05:41:41Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:containers:
+          k:{"name":"green-container-1"}:
+            .: {}
+            f:command: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:initContainers:
+          .: {}
+          k:{"name":"init-myservice"}:
+            .: {}
+            f:command: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: python-requests
+    operation: Update
+    time: "2020-09-04T05:41:41Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:initContainerStatuses: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.244.1.5"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-09-04T05:41:54Z"
+  name: blue
+  namespace: default
+  resourceVersion: "4151"
+  selfLink: /api/v1/namespaces/default/pods/blue
+  uid: 6eea0a5e-042d-4611-8c53-749eb589a259
+spec:
+  containers:
+  - command:
+    - sh
+    - -c
+    - echo The app is running! && sleep 3600
+    image: busybox:1.28
+    imagePullPolicy: IfNotPresent
+    name: green-container-1
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-qmntg
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  initContainers:
+  - command:
+    - sh
+    - -c
+    - sleep 5
+    image: busybox
+    imagePullPolicy: Always
+    name: init-myservice
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-qmntg
+      readOnly: true
+  nodeName: node01
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-qmntg
+    secret:
+      defaultMode: 420
+      secretName: default-token-qmntg
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-04T05:41:53Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-04T05:41:54Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-04T05:41:54Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-09-04T05:41:41Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://eb71786c03aca75e1f377ce6e51e6dcb957c23bfaa4bd49be9e4582e85f50c4a
+    image: busybox:1.28
+    imageID: docker-pullable://busybox@sha256:141c253bc4c3fd0a201d32dc1f493bcf3fff003b6df416dea4f41046e0f37d47
+    lastState: {}
+    name: green-container-1
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-09-04T05:41:53Z"
+  hostIP: 172.17.0.14
+  initContainerStatuses:
+  - containerID: docker://e99b009f47267832219a44908cbf41017cc160cc52bb3cf882f1fc8db839bfb4
+    image: busybox:latest
+    imageID: docker-pullable://busybox@sha256:c3dbcbbf6261c620d133312aee9e858b45e1b686efbcead7b34d9aae58a37378
+    lastState: {}
+    name: init-myservice
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: docker://e99b009f47267832219a44908cbf41017cc160cc52bb3cf882f1fc8db839bfb4
+        exitCode: 0
+        finishedAt: "2020-09-04T05:41:53Z"
+        reason: Completed
+        startedAt: "2020-09-04T05:41:48Z"
+  phase: Running
+  podIP: 10.244.1.5
+  podIPs:
+  - ip: 10.244.1.5
+  qosClass: BestEffort
+  startTime: "2020-09-04T05:41:41Z"
